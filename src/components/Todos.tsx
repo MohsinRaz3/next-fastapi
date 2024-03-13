@@ -3,16 +3,16 @@ import { deleteTodo, getData, postTodo } from '@/utils/apiCalling'
 import React, { useEffect, useState } from 'react'
 import AddTodos from './AddTodos'
 import { INotes } from '@/utils/todoTypes'
-import { Check, FilePenLine, Trash, X } from 'lucide-react'
+import { Check, Divide, FilePenLine, Trash, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { Checkbox } from "@/components/ui/checkbox"
 
 
 const Todos = () => {
-  const [todo, setTodos] = useState<INotes[]>()
+  const [todo, setTodos] = useState<INotes[] >()
   const router = useRouter()
   useEffect(() => {
-    const getData1 = async ():Promise<INotes[]> =>  {
+    const getData1 = async ():Promise<INotes[] | String> =>  {
       const todos = await getData()
     //  console.log(todos);
       setTodos(todos)
@@ -27,9 +27,7 @@ router.refresh()
     await deleteTodo(id)
   }
 
-  const handleUpdateCheck = async(isComplete:any)=>{
-    await postTodo(isComplete)
-  }
+
 
   return (
     <>  
@@ -40,19 +38,20 @@ router.refresh()
       <div className="scrollbar-content">
         {todo?.map((item: any,index:number) =>
           (
-            <div className="flex bg-[#B380DA] my-4 p-2 rounded-lg gap-x-5 mx-2 justify-between" key={item.id}>
+           <div className="flex bg-[#B380DA] my-4 p-2 rounded-lg gap-x-5 mx-2 justify-between" key={item.id}>
              <div className='flex items-center justify-center gap-x-2 '>
-             <p className='bg-[#FCA5A5] border flex items-center justify-center border-[#FCA5A5] w-6 h-6 rounded-full'>{index +1}</p>
+             <p  className='bg-[#FCA5A5] border flex items-center justify-center border-[#FCA5A5] w-6 h-6 rounded-full'>{index +1}</p>
               <div>{item.task}</div>
              </div>
 
              <div className='flex justify-evenly items-center gap-x-2'>
-             <div className='pr-2 my-1'>{item.is_completed === true ? <X/> :  <Checkbox onClick={()=>{handleUpdateCheck}} className='pointer'/>} </div>
+             <div className='pr-2 my-1'>{item.is_completed === false ? <X/> : <Check/> } </div>
               <div><FilePenLine cursor={"Pointer"}/></div>
               <div ><Trash cursor={"Pointer"} onClick={()=> deleteHandler(item.id)} /></div>
              </div>
 
             </div>
+          
           )
         )}
       </div>
