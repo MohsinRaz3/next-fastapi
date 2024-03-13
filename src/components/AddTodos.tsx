@@ -5,11 +5,9 @@ import { Button } from "@/components/ui/button"
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
 import { postTodo } from '@/utils/apiCalling'
-import { useRouter } from 'next/navigation'
 
 const AddTodos = () => {
     const [newTodo, setNewTodo] = useState("")
-    const router = useRouter()
 
     const handleTodo: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
@@ -22,22 +20,20 @@ const AddTodos = () => {
             }
         )
         setNewTodo("")
-        router.refresh()
-
     
     }
  
 
     return (
-        <div>
+        <div className='flex flex-col md:flex-grow  bg-[#B380DA] border border-black  rounded-sm py-1.5 justify-center items-stretch'>
             <form onSubmit={handleTodo}>
-                <div className='flex justify-between'>
+                <div className='flex flex-col md:flex-row md:justify-between items-center'>
                     <div >
-                        <Input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} className='bg-red-300 ' type='text' placeholder='Enter note here' />
+                        <Input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} className='bg-red-300 ml-1.5 md:h-12 w-96  md:w-[483px]  ' type='text' placeholder='Enter note here' />
                     </div>
 
-                    <div className='pt-1'>
-                        <Button type="submit" size={"sm"} className='gap-x-1  '>
+                    <div  className='py-2'>
+                        <Button type="submit" size={"sm"} className=' mx-2 h-10 w-32'>
                             Add Note <Plus size={18} />
                         </Button>
                     </div>
