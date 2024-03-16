@@ -9,29 +9,38 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 
 const Todos = () => {
-  const [todo, setTodos] = useState<INotes[] >()
-  const router = useRouter()
+  const [todo, setTodos] = useState<INotes[]>()
+  
   useEffect(() => {
-    const getData1 = async ():Promise<INotes[] | String> =>  {
-      const todos = await getData()
-    //  console.log(todos);
-      setTodos(todos)
-      return todos
+    const getData1 = async () =>  {
+      const todos = await getData();
+      setTodos(prevTodos => {
+        // Only update if the fetched todos are different from the current todos
+        if (JSON.stringify(prevTodos) !== JSON.stringify(todos)) {
+          return todos;
+        }
+        return prevTodos;
+      });
+    };
+    getData1();
+  }, [todo]);
+  
+
+  const deleteHandler = async (id: number) => {
+    try {
+      await deleteTodo(id);
+      // Filter out the deleted todo from the current state
+      setTodos(prevTodos => prevTodos?.filter(todo => todo.id !== id));
+    } catch (error) {
+      console.error('Error deleting todo:', error);
     }
-    getData1()
-router.refresh()
-      
-  }, [])
-
-  const deleteHandler = async(id: number) => {
-    await deleteTodo(id)
-  }
-
+  };
+  
 
 
   return (
     <>  
-        <AddTodos />
+        <AddTodos setTodu={setTodos} />
         <div className='h-[80vh] overflow-y-scroll text-black px-24 py-12 rounded-br-2xl rounded-b-2xl justify-center items-center border-black border-[1px] bg-[#60C0BF]'>
     <hr className="w-96 h-0.5 mx-auto bg-gray-900 border-0 rounded my-3 dark:bg-gray-900" />
     <div className="scrollbar-container">
