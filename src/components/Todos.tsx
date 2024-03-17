@@ -30,7 +30,7 @@ const Todos = () => {
     try {
       await deleteTodo(id);
       // Filter out the deleted todo from the current state
-      setTodos(prevTodos => prevTodos?.filter(todo => todo.id !== id));
+      setTodos(prevTodos => prevTodos?.filter(todo  => todo?.id !== id));
     } catch (error) {
       console.error('Error deleting todo:', error);
     }

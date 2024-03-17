@@ -1,8 +1,9 @@
 export interface INotes {
     
-        note : {
+        
+          id?: any
           task: string
           is_completed: false
-        }
+      
       
 }
