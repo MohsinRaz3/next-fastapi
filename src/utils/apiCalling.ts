@@ -4,13 +4,13 @@ export const getData = async () => {
     
     
     try {
-        const res = await fetch("https://fastapi-notesapp.onrender.com/notes")
+        const res = await fetch("https://fastapi-notesapp.onrender.com/notes", {cache: "no-cache"})
         const result = await res.json()
 
         if(result.detail === "notes not found"){
             return "NotFound"
         }
-        
+
         return result
     } catch (error) {
         return "Errors"
