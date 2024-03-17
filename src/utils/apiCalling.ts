@@ -2,10 +2,24 @@ import { INotes } from "./todoTypes";
 
 export const getData = async () => {
     
-    const res = await fetch("https://fastapi-notesapp.onrender.com/notes")
-    const result = await res.json()
-    console.log(result);
-    return result
+    
+    try {
+        const res = await fetch("https://fastapi-notesapp.onrender.com/notes")
+        const result = await res.json()
+
+        if(result.detail === "notes not found"){
+            return "NotFound"
+        }
+        
+        return result
+    } catch (error) {
+        return "Errors"
+    }
+
+
+
+
+   
 
 }
 

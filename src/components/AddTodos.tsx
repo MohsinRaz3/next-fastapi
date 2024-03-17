@@ -6,9 +6,9 @@ import { useState } from 'react'
 import { Plus } from 'lucide-react'
 import { postTodo } from '@/utils/apiCalling'
 
-const AddTodos = ({setTodu}: any) => {
+const AddTodos = ({setTodu,todos}:any) => {
     const [newTodo, setNewTodo] = useState("")
-
+   
     const handleTodo: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         await postTodo( 
@@ -19,8 +19,15 @@ const AddTodos = ({setTodu}: any) => {
                 }
             }
         )
-        setTodu(newTodo)
+
         setNewTodo("")
+        setTodu((prevTodos: any) => [
+            ...prevTodos,
+            {
+              task: newTodo,
+              is_completed: false
+            }
+          ]);
     
     }
  
