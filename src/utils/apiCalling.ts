@@ -16,11 +16,6 @@ export const getData = async () => {
         return "Errors"
     }
 
-
-
-
-   
-
 }
 
 export const postTodo = async (todo:any):Promise<any> => {
@@ -36,7 +31,14 @@ export const postTodo = async (todo:any):Promise<any> => {
 
 }
 
-export const updateTodo = async() =>{
+export const updateTodo = async(todo:any):Promise<any>=>{
+    const res = await fetch("https://fastapi-notesapp.onrender.com/notes/", {
+        method: 'PATCH',
+        headers : { 'Content-Type' : 'application/json'},
+        body: JSON.stringify({task : todo.note.task, is_completed: todo.note.is_completed})
+    })
+    const UpdatedTodo = res.json()
+    return UpdatedTodo
     
 }
 
