@@ -18,7 +18,7 @@ getData()
   },[])
   
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between  py-8 px-24">
+    <main className="flex min-h-screen flex-col items-center justify-between pr-8 md:pr-0 py-8 px-24">
      <div>
       <h1 className="text-white text-3xl py-3 font-bold flex justify-center item-center">
         {homeValue?.message}

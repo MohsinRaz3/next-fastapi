@@ -43,7 +43,6 @@ const Todos = () => {
     <>  
         <AddTodos setTodu={setTodos} />
         <div className='h-[80vh] overflow-y-scroll text-black px-24 py-12 rounded-br-2xl rounded-b-2xl justify-center items-center border-black border-[1px] bg-[#60C0BF]'>
-    <hr className="w-96 h-0.5 mx-auto bg-gray-900 border-0 rounded my-3 dark:bg-gray-900" />
     <div className="scrollbar-container">
       <div className="scrollbar-content">
         {todo?.map((item: any,index:number) =>
@@ -55,9 +54,9 @@ const Todos = () => {
              </div>
 
              <div className='flex justify-evenly items-center gap-x-2'>
-             <div className='pr-2 my-1'>{item.is_completed === false ? <X/> : <Check/> } </div>
-              <div> <AlertDialogDemo/></div>
-              <div ><Trash cursor={"Pointer"} onClick={()=> deleteHandler(item.id)} /></div>
+             <div className='pr-2 my-1'>{item.is_completed === false ? <X className='text-red-800'/> : <Check className='text-green-700'/> } </div>
+              <div> <AlertDialogDemo setTodu={setTodos} editTodo={item}/></div>
+              <div ><Trash className='text-red-800' cursor={"Pointer"} onClick={()=> deleteHandler(item.id)} /></div>
              </div>
 
             </div>

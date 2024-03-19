@@ -31,16 +31,18 @@ export const postTodo = async (todo:any):Promise<any> => {
 
 }
 
-export const updateTodo = async(todo:any):Promise<any>=>{
-    const res = await fetch("https://fastapi-notesapp.onrender.com/notes/", {
-        method: 'PATCH',
-        headers : { 'Content-Type' : 'application/json'},
-        body: JSON.stringify({task : todo.note.task, is_completed: todo.note.is_completed})
-    })
-    const UpdatedTodo = res.json()
-    return UpdatedTodo
+export const updateTodo = async (todo: any): Promise<any> => {
+    console.log("heresssssssss",todo);
     
+    const res = await fetch(`https://fastapi-notesapp.onrender.com/notes/${todo.note.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id:todo.note.id, task: todo.note.task, is_completed: todo.note.is_completed == !todo.note.is_completed })
+    });
+    const updatedTodo = await res.json(); // Corrected line
+    return updatedTodo;
 }
+
 
 
 export const deleteTodo = async (todo_id: Number):Promise<void> => {
