@@ -12,9 +12,11 @@ import { AlertDialogDemo } from './UpdateTodos'
 const Todos = () => {
   const [todo, setTodos] = useState<INotes[]>()
   
+  
+  
   useEffect(() => {
     const getData1 = async () =>  {
-      const todos = await getData();
+      const todos = await getData();      
       setTodos(prevTodos => {
         // Only update if the fetched todos are different from the current todos
         if (JSON.stringify(prevTodos) !== JSON.stringify(todos)) {
