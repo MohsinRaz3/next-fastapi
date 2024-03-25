@@ -1,5 +1,5 @@
 # Notes App
-![Next.js 14 TailwindCSS](https://drive.google.com/file/d/1SsmOc4uIvVcZn_il5vqehDsMqDOQtVHr/view?usp=sharing)
+![Next.js 14 TailwindCSS](https://github.com/MohsinRaz3/next-fastapi/blob/main/public/noteapp.png)
 
 
 This repository houses the frontend and backend components of a Notes App, designed to streamline your note-taking experience. The frontend is built with Next.js, Tailwind CSS, and Shadcn UI, while the backend is powered by FastAPI, SQLModel, Pydantic, and SQLAlchemy. Both frontend and backend are deployed respectively on Vercel and Render, providing a seamless user experience and reliable backend infrastructure.
