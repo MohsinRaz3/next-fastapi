@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Notes App
 
-## Getting Started
+This repository houses the frontend and backend components of a Notes App, designed to streamline your note-taking experience. The frontend is built with Next.js, Tailwind CSS, and Shadcn UI, while the backend is powered by FastAPI, SQLModel, Pydantic, and SQLAlchemy. Both frontend and backend are deployed respectively on Vercel and Render, providing a seamless user experience and reliable backend infrastructure.
 
-First, run the development server:
+## CRUD Operations
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The Notes App supports the following CRUD operations:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Create**: Users can create new notes by providing a title and content.
+- **Read**: Users can view all existing notes or retrieve a specific note by its ID.
+- **Update**: Users can update the title or content of an existing note.
+- **Delete**: Users can delete a note by its ID.
+  
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **User-Friendly Interface**: The frontend provides an intuitive interface for creating, managing, and organizing notes efficiently.
+- **Responsive Design**: Utilizing Tailwind CSS, the app ensures responsiveness across various devices, allowing users to access their notes anywhere.
+- **Strong Backend**: The backend, built with FastAPI and SQLAlchemy, ensures robustness and security in handling data operations.
+- **Type-Safe**: Leveraging TypeScript on the frontend and Pydantic on the backend ensures type safety, reducing errors and enhancing code maintainability.
+- **Easy Deployment**: Deployed on Vercel and Render, the app offers hassle-free deployment and reliable hosting services.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used
 
-## Learn More
+### Frontend
+- **Next.js**: A React framework for building server-rendered applications.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **Shadcn UI**: An elegant and customizable UI component library.
+- **TypeScript**: A statically typed superset of JavaScript, enhancing code quality and developer productivity.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Frontend**: Deployed on [Vercel](https://vercel.com/), offering fast and reliable hosting services for Next.js applications.
